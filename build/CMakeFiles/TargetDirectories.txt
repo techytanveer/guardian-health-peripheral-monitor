@@ -1,7 +1,0 @@
-/home/tanveer/guardian/build/CMakeFiles/guardian.dir
-/home/tanveer/guardian/build/CMakeFiles/edit_cache.dir
-/home/tanveer/guardian/build/CMakeFiles/rebuild_cache.dir
-/home/tanveer/guardian/build/CMakeFiles/list_install_components.dir
-/home/tanveer/guardian/build/CMakeFiles/install.dir
-/home/tanveer/guardian/build/CMakeFiles/install/local.dir
-/home/tanveer/guardian/build/CMakeFiles/install/strip.dir

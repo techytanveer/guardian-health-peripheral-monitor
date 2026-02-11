@@ -1,0 +1,8 @@
+# Ignore build artifacts
+build/
+bin/
+obj/
+
+# Ignore local IDE settings
+.vscode/
+.idea/
