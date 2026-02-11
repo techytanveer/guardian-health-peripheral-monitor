@@ -1,0 +1,59 @@
+name: Guardian CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ 'v*' ] # Triggers on version tags (e.g., v1.0.0)
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
+
+    - name: Configure CMake
+      # We enable 'Wall' via CMakeLists, but here we define the Build Type
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build Project
+      run: cmake --build build --config Release
+
+    - name: Create Release Package
+      # This groups the binary and the service file for "production readiness"
+      run: |
+        mkdir -p release/bin release/systemd
+        cp build/guardian release/bin/
+        cp systemd/guardian.service release/systemd/
+        tar -czvf guardian-v1.0.0-linux-x64.tar.gz -C release .
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: guardian-binary
+        path: guardian-v1.0.0-linux-x64.tar.gz
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: guardian-binary
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: guardian-v1.0.0-linux-x64.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
