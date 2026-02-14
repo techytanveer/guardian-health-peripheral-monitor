@@ -4,6 +4,8 @@
 ![Platform: Linux](https://img.shields.io/badge/Platform-Linux-orange.svg)
 ![Language: C++17](https://img.shields.io/badge/Language-C%2B%2B17-blue.svg)
 
+[![Guardian CI/CD](https://github.com/techytanveer/guardian-health-peripheral-monitor/actions/workflows/pipeline.yml/badge.svg)](https://github.com/techytanveer/guardian-health-peripheral-monitor/actions/workflows/pipeline.yml)
+
 **Guardian** is a production-ready system daemon designed for embedded Linux targets. It demonstrates high-reliability engineering practices, hardware peripheral abstraction, and automated build/release engineering—directly addressing the requirements for PamirAI’s embedded product development.
 
 ---
@@ -96,6 +98,7 @@ echo "[PASS] Binary is executable."
 
 echo "--- All Tests Passed ---"
 ```
+
 
 
 
