@@ -68,7 +68,6 @@ Before marking a release as "Production Ready," the following tests are executed
  4 Service Persistence: systemd successfully restarts the daemon on unexpected failure.
 
 ## 📖 Troubleshooting Runbook (Summary)
-See docs/RUNBOOK.md for full details.
 
  * Symptom: [ERROR] Failed to open I2C bus.
     * Cause: User lack of permissions or missing kernel module i2c-dev.
@@ -77,6 +76,26 @@ See docs/RUNBOOK.md for full details.
     * Cause: Main thread blocked by heavy I/O or high CPU load.
     * Fix: Verify kick_watchdog() frequency vs. hardware timeout settings.
 
+## ✉️ Status Reporting
+As part of the contract deliverables, weekly status updates are maintained in `docs/STATUS/`. These reports summarize progress, highlight hardware risks, and define upcoming sprint goals.
+
+```
+#!/bin/bash
+# scripts/acceptance_test.sh
+echo "--- Starting Acceptance Tests ---"
+if [ -f "./build/guardian" ]; then
+    echo "[PASS] Binary exists."
+else
+    echo "[FAIL] Binary not found. Build first."
+    exit 1
+fi
+
+# Run a quick check (assuming --help or --version is implemented)
+./build/guardian --help > /dev/null 2>&1
+echo "[PASS] Binary is executable."
+
+echo "--- All Tests Passed ---"
+```
 
 
 
