@@ -59,6 +59,25 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now guardian
 ```
 
+## 📋 Acceptance Test Checklist (ATC)
+Before marking a release as "Production Ready," the following tests are executed via `scripts/acceptance_test.sh`:
+
+ 1 Static Analysis: Zero compiler warnings with -Wall -Werror.
+ 2 Binary Verification: Executable links correctly against standard libraries.
+ 3 Signal Integrity: Service exits with code 0 upon receiving SIGTERM.
+ 4 Service Persistence: systemd successfully restarts the daemon on unexpected failure.
+
+## 📖 Troubleshooting Runbook (Summary)
+See docs/RUNBOOK.md for full details.
+
+ * Symptom: [ERROR] Failed to open I2C bus.
+    * Cause: User lack of permissions or missing kernel module i2c-dev.
+    * Fix: Add user to i2c group: sudo usermod -aG i2c $USER.
+ * Symptom: Watchdog triggers system reset.
+    * Cause: Main thread blocked by heavy I/O or high CPU load.
+    * Fix: Verify kick_watchdog() frequency vs. hardware timeout settings.
+
+
 
 
 
