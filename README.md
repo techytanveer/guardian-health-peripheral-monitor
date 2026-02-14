@@ -1,6 +1,6 @@
 # Guardian: Embedded System Health & Peripheral Monitor
 
-[![Guardian CI/CD](https://github.com/YOUR_USERNAME/guardian/actions/workflows/pipeline.yml/badge.svg)](https://github.com/YOUR_USERNAME/guardian/actions)
+[![Guardian CI/CD](https://github.com/techytanveer/guardian/actions/workflows/pipeline.yml/badge.svg)](https://github.com/YOUR_USERNAME/guardian/actions)
 ![Platform: Linux](https://img.shields.io/badge/Platform-Linux-orange.svg)
 ![Language: C++17](https://img.shields.io/badge/Language-C%2B%2B17-blue.svg)
 
@@ -96,6 +96,7 @@ echo "[PASS] Binary is executable."
 
 echo "--- All Tests Passed ---"
 ```
+
 
 
 
