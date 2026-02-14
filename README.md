@@ -22,7 +22,7 @@
 
 ## 📂 Project Structure
 
-```text
+```
 .
 ├── .github/workflows/  # CI/CD Pipeline (Build, Test, Release)
 ├── bsp/                # Device Tree Source (DTS) snippets for hardware bring-up
@@ -32,3 +32,33 @@
 ├── src/                # Core C++ daemon logic and signal handling
 ├── systemd/            # Linux service configuration files
 └── CMakeLists.txt      # Reproducible build configuration
+```
+
+## 🚀 Getting Started
+
+**Prerequisites**
+
+ * Linux environment (Ubuntu 22.04+ recommended)
+ * CMake 3.10+
+ * G++ (supporting C++17)
+
+**Build & Install**
+To ensure a **reproducible build** consistent with production requirements:
+
+```
+# Clone and enter repo
+git clone [https://github.com/YOUR_USERNAME/guardian.git](https://github.com/YOUR_USERNAME/guardian.git) && cd guardian
+
+# Configure and Build
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+
+# Install to system (Simulates production deployment)
+sudo make -C build install
+sudo systemctl daemon-reload
+sudo systemctl enable --now guardian
+```
+
+
+
+
